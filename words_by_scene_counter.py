@@ -43,8 +43,6 @@ with open(r'C:\Users\stockwja\Downloads\Porfiro.docx.txt', 'r', encoding="utf8")
     # using the splitlines() function
     lines = data.splitlines()
 
-    print_and_update(curr_line)
-
     ep_number = 0
     scene_number = 0
     # Iterating over every line from the data
@@ -69,6 +67,7 @@ with open(r'C:\Users\stockwja\Downloads\Porfiro.docx.txt', 'r', encoding="utf8")
         elif "Scene" in curr_line:
             scene_number += 1
             other_words_total += 2
+            this_scene_people = porfiro_words_this_scene + carmen_words_this_scene + jonny_words_this_scene + martin_words_this_scene + antigone_words_this_scene + viridian_words_this_scene    
             # We're starting a new scene, so add all the word counts
             # from the last scene to the totals, then reset this_scene
             # word counts to zero
@@ -102,6 +101,12 @@ with open(r'C:\Users\stockwja\Downloads\Porfiro.docx.txt', 'r', encoding="utf8")
                 other_words_total += other_words_this_scene
                 print("\tOther words in this scene:", other_words_this_scene)
                 other_words_this_scene = 0
+            
+            print("\tWords in this scene spoken by major characters:", this_scene_people)
+            # We can record about 1500 words per hour
+            print("\tApproximate time to record this scene:", this_scene_people * 60/1500, "minutes")
+
+
             print("Ep", ep_number, "Scene", scene_number)
         else:
             # Porfiro lines
